@@ -21,7 +21,7 @@ class  EmployeeWageProblem{
 	  public void computeEmpWage(){
 	    int empHrs = 0, empWage = 0, totalEmpWage = 0, totalEmpHrs = 0,totalWorkingDays = 0;
 
-	      while(totalEmpHrs <= MaxHrsPerMonth && totalWorkingDays <= NumOfWorkingDays){
+	      while(totalEmpHrs <= MaxHrsPerMonth && totalWorkingDays < NumOfWorkingDays){
 
 	        int empCheck = (int)Math.floor(Math.random()*10)%3;
 	        totalWorkingDays++;
@@ -39,7 +39,7 @@ class  EmployeeWageProblem{
 	            break;
 
 	          default:
-	            empCheck = 0;
+	            empHrs = 0;
 	        }
 	        totalEmpHrs += empHrs;
 	        empWage = empHrs * empRatePerHour;
