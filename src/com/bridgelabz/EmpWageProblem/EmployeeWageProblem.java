@@ -11,9 +11,11 @@ class  EmployeeWageProblem{
 	  private int numOfCompany = 0;
 	  //private CompanyEmpWage[] CompanyWageArray;
 	  public ArrayList<CompanyEmpWage> CompanyWageArrayList;
+	  public HashMap<String,CompanyEmpWage> CompanyWageMap;
 
 	  public EmployeeWageProblem(){
 	    CompanyWageArrayList = new ArrayList<CompanyEmpWage>();
+	    CompanyWageMap=new HashMap<String,CompanyEmpWage>();
 	  }
 
 	  private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
@@ -21,6 +23,7 @@ class  EmployeeWageProblem{
 	    //CompanyWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
 	    CompanyEmpWage c =new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
 		CompanyWageArrayList.add(c);
+		CompanyWageMap.put(company,c);
 		numOfCompany++;
 
 	  }
@@ -72,6 +75,12 @@ class  EmployeeWageProblem{
 
 	  }
 	  
+	  public int gettotalwage(String company)
+	  {
+	  	return CompanyWageMap.get(company).totalEmpWage;
+	  }
+
+	  
 	    
 
 	  public static void main(String[] args){
@@ -80,5 +89,7 @@ class  EmployeeWageProblem{
 	    empWageBuilder.addCompanyEmpWage("DMart",20,2,10);
 	    empWageBuilder.addCompanyEmpWage("Reliance",20,2,10);
 	    empWageBuilder.computeEmpWage();
+	    System.out.println("Total wage for company DMart (in EmployeeWageProblem Class) is "+empWageBuilder.gettotalwage("DMart"));
+	    System.out.println("Total wage for company Reliance (in EmployeeWageProblem Class) is "+empWageBuilder.gettotalwage("Reliance"));
 	  }
 	}
