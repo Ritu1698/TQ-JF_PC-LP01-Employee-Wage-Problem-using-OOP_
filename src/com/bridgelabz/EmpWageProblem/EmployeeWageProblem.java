@@ -1,5 +1,8 @@
 package com.bridgelabz.EmpWageProblem;
 
+
+	
+
 class  EmployeeWageProblem{
 
 	  public static final int IS_PART_TIME = 1;
