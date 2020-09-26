@@ -12,7 +12,7 @@ class  EmployeeWageProblem{
 	      //Variables
 	      int empHrs = 0, empWage = 0, totalEmpWage = 0, totalEmpHrs = 0,totalWorkingDays = 0;
 
-	      while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays <= NUM_OF_WORKING_DAYS){
+	      while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS){
 
 	        int empCheck = (int)Math.floor(Math.random()*10)%3;
 	        totalWorkingDays++;
@@ -30,7 +30,7 @@ class  EmployeeWageProblem{
 	            break;
 
 	          default:
-	            empCheck = 0;
+	            empHrs = 0;
 	        }
 	        totalEmpHrs += empHrs;
 	        empWage = empHrs * EMP_RATE_PER_HOUR;
