@@ -1,5 +1,5 @@
 package com.bridgelabz.EmpWageProblem;
-
+import java.util.*;
 
 	
 
@@ -9,24 +9,28 @@ class  EmployeeWageProblem{
 	  public static final int IS_FULL_TIME = 2;
 
 	  private int numOfCompany = 0;
-	  private CompanyEmpWage[] CompanyWageArray;
+	  //private CompanyEmpWage[] CompanyWageArray;
+	  public ArrayList<CompanyEmpWage> CompanyWageArrayList;
 
 	  public EmployeeWageProblem(){
-	    CompanyWageArray = new CompanyEmpWage[5];
+	    CompanyWageArrayList = new ArrayList<CompanyEmpWage>();
 	  }
 
 	  private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
 
-	    CompanyWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-
-	    numOfCompany++;
+	    //CompanyWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+	    CompanyEmpWage c =new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+		CompanyWageArrayList.add(c);
+		numOfCompany++;
 
 	  }
 	  private void computeEmpWage() {
 		  for(int i=0;i < numOfCompany;i++) {
-			  CompanyWageArray[i].setTotalEmpWage(this.computeEmpWage(CompanyWageArray[i]));
-			  System.out.println(CompanyWageArray[i]);
+			  CompanyWageArrayList.get(i).setTotalEmpWage(this.computeEmpWage(CompanyWageArrayList.get(i)));
+			  System.out.println(CompanyWageArrayList.get(i));
 		  }
+		  
+		  
 	  }
 
 	  private int computeEmpWage(CompanyEmpWage companyEmpWage){
