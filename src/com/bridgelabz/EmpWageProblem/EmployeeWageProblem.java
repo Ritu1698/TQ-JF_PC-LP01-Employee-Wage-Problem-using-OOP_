@@ -1,46 +1,18 @@
 package com.bridgelabz.EmpWageProblem;
-import java.util.*;
-
-	
 
 class  EmployeeWageProblem{
 
 	  public static final int IS_PART_TIME = 1;
 	  public static final int IS_FULL_TIME = 2;
+	  public static final int EMP_RATE_PER_HOUR = 20;
+	  public static final int NUM_OF_WORKING_DAYS = 20;
+	  public static final int MAX_HRS_IN_MONTH = 100;
 
-	  private int numOfCompany = 0;
-	  //private CompanyEmpWage[] CompanyWageArray;
-	  public ArrayList<CompanyEmpWage> CompanyWageArrayList;
-	  public HashMap<String,CompanyEmpWage> CompanyWageMap;
+	  public static int computeEmpWage() {
+	      //Variables
+	      int empHrs = 0, empWage = 0, totalEmpWage = 0, totalEmpHrs = 0,totalWorkingDays = 0;
 
-	  public EmployeeWageProblem(){
-	    CompanyWageArrayList = new ArrayList<CompanyEmpWage>();
-	    CompanyWageMap=new HashMap<String,CompanyEmpWage>();
-	  }
-
-	  private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
-
-	    //CompanyWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-	    CompanyEmpWage c =new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-		CompanyWageArrayList.add(c);
-		CompanyWageMap.put(company,c);
-		numOfCompany++;
-
-	  }
-	  private void computeEmpWage() {
-		  for(int i=0;i < numOfCompany;i++) {
-			  CompanyWageArrayList.get(i).setTotalEmpWage(this.computeEmpWage(CompanyWageArrayList.get(i)));
-			  System.out.println(CompanyWageArrayList.get(i));
-		  }
-		  
-		  
-	  }
-
-	  private int computeEmpWage(CompanyEmpWage companyEmpWage){
-
-	     int empHrs = 0, empWage = 0, totalEmpWage = 0, totalEmpHrs = 0,totalWorkingDays = 0;
-
-	      while(totalEmpHrs <= companyEmpWage.maxHoursPerMonth && totalWorkingDays < companyEmpWage.numOfWorkingDays){
+	      while(totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS){
 
 	        int empCheck = (int)Math.floor(Math.random()*10)%3;
 	        totalWorkingDays++;
@@ -61,35 +33,22 @@ class  EmployeeWageProblem{
 	            empHrs = 0;
 	        }
 	        totalEmpHrs += empHrs;
-	        empWage = empHrs * companyEmpWage.empRatePerHour;
+	        empWage = empHrs * EMP_RATE_PER_HOUR;
 	        totalEmpWage += empWage;
 	        //System.out.println("Emp Wage: "+empWage);
 	        System.out.println("Days: "+ totalWorkingDays + "  Hrs: " + totalEmpHrs);
-	        System.out.println("Daily wage for employee on Day "+ totalWorkingDays+": is " + empHrs*companyEmpWage.empRatePerHour);
-
 
 	      }
 
-	      return totalEmpHrs*companyEmpWage.empRatePerHour;
-
-
+	      
+	      //System.out.println("Total Emp Wage: "+totalEmpWage);
+	      return totalEmpWage;
+	       
 	  }
-	  
-	  public int gettotalwage(String company)
-	  {
-	  	return CompanyWageMap.get(company).totalEmpWage;
-	  }
-
-	  
-	    
 
 	  public static void main(String[] args){
 
-	    EmployeeWageProblem empWageBuilder = new EmployeeWageProblem();
-	    empWageBuilder.addCompanyEmpWage("DMart",20,2,10);
-	    empWageBuilder.addCompanyEmpWage("Reliance",20,2,10);
-	    empWageBuilder.computeEmpWage();
-	    System.out.println("Total wage for company DMart (in EmployeeWageProblem Class) is "+empWageBuilder.gettotalwage("DMart"));
-	    System.out.println("Total wage for company Reliance (in EmployeeWageProblem Class) is "+empWageBuilder.gettotalwage("Reliance"));
+	    int totalWage = computeEmpWage( );
+	    System.out.println("Total Emp Wage: "+totalWage);
 	  }
 	}
