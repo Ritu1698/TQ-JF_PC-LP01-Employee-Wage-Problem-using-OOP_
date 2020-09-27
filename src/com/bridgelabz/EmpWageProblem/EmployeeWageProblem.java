@@ -3,7 +3,7 @@ import java.util.*;
 
 	
 
-class  EmployeeWageProblem{
+class  EmployeeWageProblem implements IComputeEmpWage{
 
 	  public static final int IS_PART_TIME = 1;
 	  public static final int IS_FULL_TIME = 2;
@@ -16,7 +16,7 @@ class  EmployeeWageProblem{
 	    CompanyWageArrayList = new ArrayList<CompanyEmpWage>();
 	  }
 
-	  private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
+	  public void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
 
 	    //CompanyWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
 	    CompanyEmpWage c =new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
@@ -24,7 +24,7 @@ class  EmployeeWageProblem{
 		numOfCompany++;
 
 	  }
-	  private void computeEmpWage() {
+	  public void computeEmpWage() {
 		  for(int i=0;i < numOfCompany;i++) {
 			  CompanyWageArrayList.get(i).setTotalEmpWage(this.computeEmpWage(CompanyWageArrayList.get(i)));
 			  System.out.println(CompanyWageArrayList.get(i));
