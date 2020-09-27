@@ -3,7 +3,7 @@ package com.bridgelabz.EmpWageProblem;
 
 	
 
-class  EmployeeWageProblem{
+class  EmployeeWageProblem implements IComputeEmpWage{
 
 	  public static final int IS_PART_TIME = 1;
 	  public static final int IS_FULL_TIME = 2;
@@ -15,14 +15,14 @@ class  EmployeeWageProblem{
 	    CompanyWageArray = new CompanyEmpWage[5];
 	  }
 
-	  private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
+	  public void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
 
 	    CompanyWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
 
 	    numOfCompany++;
 
 	  }
-	  private void computeEmpWage() {
+	  public void computeEmpWage() {
 		  for(int i=0;i < numOfCompany;i++) {
 			  CompanyWageArray[i].setTotalEmpWage(this.computeEmpWage(CompanyWageArray[i]));
 			  System.out.println(CompanyWageArray[i]);
