@@ -3,7 +3,7 @@ import java.util.*;
 
 	
 
-class  EmployeeWageProblem{
+public class  EmployeeWageProblem implements IComputeEmpWage{
 
 	  public static final int IS_PART_TIME = 1;
 	  public static final int IS_FULL_TIME = 2;
@@ -18,7 +18,7 @@ class  EmployeeWageProblem{
 	    CompanyWageMap=new HashMap<String,CompanyEmpWage>();
 	  }
 
-	  private void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
+	  public void addCompanyEmpWage(String company,int empRatePerHour,int numOfWorkingDays,int maxHoursPerMonth){
 
 	    //CompanyWageArray[numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
 	    CompanyEmpWage c =new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
@@ -27,7 +27,7 @@ class  EmployeeWageProblem{
 		numOfCompany++;
 
 	  }
-	  private void computeEmpWage() {
+	  public void computeEmpWage() {
 		  for(int i=0;i < numOfCompany;i++) {
 			  CompanyWageArrayList.get(i).setTotalEmpWage(this.computeEmpWage(CompanyWageArrayList.get(i)));
 			  System.out.println(CompanyWageArrayList.get(i));
@@ -75,7 +75,7 @@ class  EmployeeWageProblem{
 
 	  }
 	  
-	  public int gettotalwage(String company)
+	  public int getTotalWage(String company)
 	  {
 	  	return CompanyWageMap.get(company).totalEmpWage;
 	  }
@@ -89,7 +89,7 @@ class  EmployeeWageProblem{
 	    empWageBuilder.addCompanyEmpWage("DMart",20,2,10);
 	    empWageBuilder.addCompanyEmpWage("Reliance",20,2,10);
 	    empWageBuilder.computeEmpWage();
-	    System.out.println("Total wage for company DMart (in EmployeeWageProblem Class) is "+empWageBuilder.gettotalwage("DMart"));
-	    System.out.println("Total wage for company Reliance (in EmployeeWageProblem Class) is "+empWageBuilder.gettotalwage("Reliance"));
+	    System.out.println("Total wage for company DMart (in EmployeeWageProblem Class) is "+empWageBuilder.getTotalWage("DMart"));
+	    System.out.println("Total wage for company Reliance (in EmployeeWageProblem Class) is "+empWageBuilder.getTotalWage("Reliance"));
 	  }
 	}
